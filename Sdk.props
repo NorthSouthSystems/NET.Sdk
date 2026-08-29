@@ -67,6 +67,8 @@
                 <OutputType>Exe</OutputType>
                 <IsPackable>false</IsPackable>
                 <IsBenchmarkProject>true</IsBenchmarkProject>
+                <IsTestingPlatformApplication>false</IsTestingPlatformApplication>
+                <IsTestProject>false</IsTestProject>
                 <SonarQubeExclude>true</SonarQubeExclude>
                 <!-- CA1050  : Declare types in namespaces -->
                 <!-- IDE1006 : Naming rule violation: Prefix 'B_' is not expected -->
@@ -86,7 +88,8 @@
             <PropertyGroup>
                 <OutputType>Exe</OutputType>
                 <IsPackable>false</IsPackable>
-                <!-- Microsoft.NET.Test.Sdk will also set this; however, it may do so "too late" to be useful. -->
+                <IsBenchmarkProject>false</IsBenchmarkProject>
+                <IsTestingPlatformApplication>true</IsTestingPlatformApplication>
                 <IsTestProject>true</IsTestProject>
                 <SonarQubeExclude>true</SonarQubeExclude>
                 <!-- CA1050  : Declare types in namespaces -->
@@ -101,12 +104,7 @@
 
             <ItemGroup>
                 <PackageReference Include="AwesomeAssertions" />
-                <PackageReference Include="Microsoft.NET.Test.Sdk" />
                 <PackageReference Include="xunit.v3" />
-                <PackageReference Include="xunit.runner.visualstudio">
-                    <PrivateAssets>all</PrivateAssets>
-                    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-                </PackageReference>
             </ItemGroup>
 
             <ItemGroup>
@@ -118,14 +116,15 @@
         <Otherwise>
             <PropertyGroup>
                 <AnalysisMode>All</AnalysisMode>
+                <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
                 <Nullable>enable</Nullable>
                 <GenerateDocumentationFile>true</GenerateDocumentationFile>
             </PropertyGroup>
 
             <ItemGroup>
-                <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers">
+                <PackageReference Include="Microsoft.VisualStudio.Threading.Analyzers">
                     <PrivateAssets>all</PrivateAssets>
-                    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+                    <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
                 </PackageReference>
             </ItemGroup>
 
