@@ -104,7 +104,7 @@
 
             <ItemGroup>
                 <PackageReference Include="AwesomeAssertions" />
-                <PackageReference Include="Microsoft.Testing.Extensions.CodeCoverage"/>
+                <PackageReference Include="Microsoft.Testing.Extensions.CodeCoverage" PrivateAssets="all"/>
                 <PackageReference Include="xunit.v3" />
             </ItemGroup>
 
